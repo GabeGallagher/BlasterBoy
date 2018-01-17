@@ -94,8 +94,8 @@ public class CameraControl : MonoBehaviour
 		if(shakeTimer >= 0)
         {
 			Vector3 shakePosition = Random.insideUnitCircle * shakeIntensity;
-			transform.position = new Vector3(transform.position.x + shakePosition.x, transform.position.y 
-				+ shakePosition.y, transform.position.z);
+			transform.position = new Vector3(transform.position.x + shakePosition.x, 
+                transform.position.y + shakePosition.y, transform.position.z);
 			shakeTimer -= Time.deltaTime;
 		}
 	}

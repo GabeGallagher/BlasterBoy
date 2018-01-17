@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D trigger)
     {
-		if(!enemiesSpawned)
+        if (!enemiesSpawned)
         {
 			SpawnEnemies();
 		}

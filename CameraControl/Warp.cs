@@ -1,4 +1,10 @@
-﻿
+﻿/* Author Gabriel B. Gallagher <Insert date when I figure it out>
+ * 
+ * Controls the player character's ability to go through doors or portals and into new rooms. Also
+ * used to contain logic which enabled/disabled the camera based on the character's location. This
+ * logic is now handled in the RoomHUDupdater but this is a fairly new change so there might be some
+ * bugs as a result of it
+ */
 
 using UnityEngine;
 using System.Collections;
@@ -6,7 +12,7 @@ using System.Collections.Generic;
 
 public class Warp : MonoBehaviour
 {
-	public Camera camToDisable, camToEnable;
+	//public Camera camToDisable, camToEnable;
 
     public Transform warpTarget;
 
@@ -22,8 +28,9 @@ public class Warp : MonoBehaviour
              */
             trigger.GetComponent<PlayerControl>().room = warpTarget.transform.parent.parent;
 
-            camToDisable.gameObject.SetActive(false);
-            camToEnable.gameObject.SetActive(true);
+            //This code is deprecated. switching cameras is now handled in the RoomHUDupdater
+            //camToDisable.gameObject.SetActive(false);
+            //camToEnable.gameObject.SetActive(true);
         }
 	}
 }
