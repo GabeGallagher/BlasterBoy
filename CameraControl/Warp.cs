@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 public class Warp : MonoBehaviour
 {
-	//public Camera camToDisable, camToEnable;
+	public Camera camToDisable, camToEnable;
 
     public Transform warpTarget;
 
@@ -29,8 +29,8 @@ public class Warp : MonoBehaviour
             trigger.GetComponent<PlayerControl>().room = warpTarget.transform.parent.parent;
 
             //This code is deprecated. switching cameras is now handled in the RoomHUDupdater
-            //camToDisable.gameObject.SetActive(false);
-            //camToEnable.gameObject.SetActive(true);
+            camToDisable.gameObject.SetActive(false);
+            camToEnable.gameObject.SetActive(true);
         }
 	}
 }

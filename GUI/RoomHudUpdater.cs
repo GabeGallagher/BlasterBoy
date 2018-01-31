@@ -4,12 +4,22 @@ using System.Collections;
 
 public class RoomHudUpdater : MonoBehaviour
 {
-    public Camera camera;
+    CameraControl cam;
 
-    void Start()
-    {
-        camera.gameObject.SetActive(false);
-    }
+    //void Start()
+    //{
+    //    int i = 0;
+    //    while(!cam)
+    //    {
+    //        if (transform.GetChild(i).GetComponent<CameraControl>())
+    //        {
+    //            cam = transform.GetChild(i).GetComponent<CameraControl>();
+    //        }
+    //        ++i;
+    //    }
+
+    //    cam.isEnabled = false;
+    //}
 
     void OnTriggerEnter2D(Collider2D trigger)
     {
@@ -18,7 +28,7 @@ public class RoomHudUpdater : MonoBehaviour
         {
             string roomName = name;
 
-            camera.gameObject.SetActive(true);
+            //cam.isEnabled = true;
 
             //gets text from HUD
             Text worldText = GameObject.Find("World").transform.GetChild(1).GetComponent<Text>();
@@ -56,7 +66,7 @@ public class RoomHudUpdater : MonoBehaviour
         Debug.Log(trigger.name + " Exited " + name);
         if (trigger.GetComponent<PlayerControl>())
         {
-            camera.gameObject.SetActive(false); 
+            //cam.isEnabled = false; 
         }
     }
 }

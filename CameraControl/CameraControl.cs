@@ -15,6 +15,11 @@ public class CameraControl : MonoBehaviour
 
     void Start()
     {
+        GetEnabled();
+    }
+
+    private void GetEnabled()
+    {
         if (isEnabled)
         {
             gameObject.SetActive(true);

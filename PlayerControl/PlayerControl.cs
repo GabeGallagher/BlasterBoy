@@ -248,7 +248,7 @@ public class PlayerControl : MonoBehaviour
 	//Method for animation. GetKeyUp has to be handled here
 	void Update()
     {
-        //MovementAnimationHandler();   
+        MovementAnimationHandler();   
         //Would like this method called alongside Movement in FixedUpdate if possible
 
         if (Input.GetKeyDown(KeyCode.Space) && (bombParent.transform.childCount < bombMaxCount))
