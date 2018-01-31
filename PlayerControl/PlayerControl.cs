@@ -11,6 +11,7 @@
  */
 
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerControl : MonoBehaviour
@@ -21,8 +22,9 @@ public class PlayerControl : MonoBehaviour
     public Transform room;
     
 	public float maxSpeed = 5.0f;
+    public float iFrameTime = 3.0f; //time this player stays invulnerable after taking damage
 
-	public int bombMaxCount = 3;
+    public int bombMaxCount = 3;
     public int bombMaxRange = 3;
     public int bombRange = 1;
 
@@ -220,20 +222,28 @@ public class PlayerControl : MonoBehaviour
     }
 
     //Turn on iFrames after player takes damage
-    //Delegate/Event Candidate
-    void Invincibility()
+    IEnumerator Invincibility(float iFrameTime)
     {
-        if (isInvincible)
+        //deprecated as a result of switching iframes to a coroutine. Leaving this in case something
+        //breaks
+        //if (isInvincible)
+        //{
+        //    anim.SetBool("isInvincible", true);
+        //}
+        //else
+        //{
+        //    anim.SetBool("isInvincible", false);
+        //}
+        while (isInvincible)
         {
             anim.SetBool("isInvincible", true);
-        }
-        else
-        {
+            yield return new WaitForSeconds(iFrameTime);
             anim.SetBool("isInvincible", false);
+            isInvincible = false;
         }
     }
 
-    /* NOTE: Currently using Update because while using FixedUpdate, there is no guarantee that GetKeyUp()
+    /* NOTE: Currently using Update because while using FixedUpdate, there is no guarantee that GetKeyUp
      * from the Movement method will be captured and may cause the player to get stuck in one of his 
      * movement animtions despite being in Idle state. However, Update causes camera jitter for any
      * collision not on the edges of the screen. Need to find a workaround so that the character won't 
@@ -255,6 +265,9 @@ public class PlayerControl : MonoBehaviour
         {
             BombDrop();
         }
-        Invincibility();
+        if (isInvincible)
+        {
+            StartCoroutine(Invincibility(iFrameTime)); 
+        }
 	}
 }
