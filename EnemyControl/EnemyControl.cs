@@ -67,7 +67,8 @@ public class EnemyControl : MonoBehaviour
 	private bool playerDown = false;
 	private bool playerLeft = false;
 
-	void GetRays() {
+	void GetRays()
+    {
 		//Get the object named Raycasting
 		List<GameObject> children = gameObject.GetChildren();
 		
@@ -76,8 +77,10 @@ public class EnemyControl : MonoBehaviour
 		
 		/*Check object for RayCasting child (inside Room_<current room>/Room_<current room>_Enemies/
 			<this.name>(Clone)/RayCasting)*/
-		for (int i = 0; i < children.Count; i++) {
-			if (children[i].name == "RayCasting") {
+		for (int i = 0; i < children.Count; i++)
+        {
+			if (children[i].name == "RayCasting")
+            {
 				children2 = children[i].GetChildren();
 			}
 		}
@@ -88,7 +91,8 @@ public class EnemyControl : MonoBehaviour
 		}
 	}
 
-	void Start() {
+	void Start()
+    {
 		rayPoints = new List<GameObject>();
 		GetRays();
 		possibleDirectionsList = new List<int>();
@@ -182,7 +186,7 @@ public class EnemyControl : MonoBehaviour
 	//Generates a random direction from the list of possible directions for the enemy to go
 	void RandomDirection()
     {
-		temp = Random.Range(0, possibleDirectionsList.Count);
+		temp = Random.Range(0, possibleDirectionsList.Count - 1);
 		direction = possibleDirectionsList[temp];
 	}
 
