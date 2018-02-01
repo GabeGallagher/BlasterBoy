@@ -29,43 +29,28 @@ public class EnemyControl : MonoBehaviour
 	//Public Variables
 	public LayerMask layerMask;
 
-	public float speed = 1.0f;
-	public float rayDistance = 0.5f;
+	public float speed = 1.0f, rayDistance = 0.5f;
 
-	public int temp;
-
-	public int direction = 1;
+	public int temp, direction = 1;
 
 	public bool aggroState = true;
 
     //Private Variables
-    private List<GameObject> rayPoints;
+    List<GameObject> rayPoints;
 
-    private List<Ray2D> raysUp;
-    private List<Ray2D> raysDown;
-    private List<Ray2D> raysLeft;
-    private List<Ray2D> raysRight;
+    List<Ray2D> raysUp, raysDown, raysLeft, raysRight;
 
-    private List<int> possibleDirectionsList;
+    List<int> possibleDirectionsList;
 
-    private int up = 1;
-	private int down = -1;
-	private int right = 2;
-	private int left = -2;
+    int up = 1, down = -1, right = 2, left = -2;
 
 	//Raycasting booleans
-	private bool collisionUp = false;
-	private bool collisionRight = false;
-	private bool collisionDown = false;
-	private bool collisionLeft = false;
+	bool collisionUp = false, collisionRight = false, collisionDown = false, collisionLeft = false;
 
     //Finding Player booleans
-    private bool checker = false;
+    bool checker = false;
 
-    private bool playerUp = false;
-	private bool playerRight = false;
-	private bool playerDown = false;
-	private bool playerLeft = false;
+    bool playerUp = false, playerRight = false, playerDown = false, playerLeft = false;
 
 	void GetRays()
     {
