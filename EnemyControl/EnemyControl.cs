@@ -86,7 +86,8 @@ public class EnemyControl : MonoBehaviour
 		}
 
 		//Cycle through the Children of RayCasting and assigns them to a list called rayPoints
-		for (int i = 0; i < children2.Count; i++) {
+		for (int i = 0; i < children2.Count; i++)
+        {
 			rayPoints.Add(children2[i]);
 		}
 	}
@@ -102,44 +103,44 @@ public class EnemyControl : MonoBehaviour
      * bombs, and player layers to get important feedback on what the enemy is colliding with
      * at any given time.
 	 */
-	void AssignRaysToList()
+    void AssignRaysToList()
     {
-		raysUp = new List<Ray2D>();
-		raysDown = new List<Ray2D>();
-		raysLeft = new List<Ray2D>();
-		raysRight = new List<Ray2D>();
+	    raysUp = new List<Ray2D>();
+	    raysDown = new List<Ray2D>();
+	    raysLeft = new List<Ray2D>();
+	    raysRight = new List<Ray2D>();
 
-		for (int i = 0; i < rayPoints.Count; i++)
+	    for (int i = 0; i < rayPoints.Count; i++)
         {
-			//up
-			if (rayPoints[i].gameObject.name == "up")
+		    //up
+		    if (rayPoints[i].gameObject.name == "up")
             {
-				raysUp.Add(new Ray2D(new Vector2(rayPoints[i].gameObject.transform.position.x, 
-					rayPoints[i].gameObject.transform.position.y), Vector2.up));
-			}
+			    raysUp.Add(new Ray2D(new Vector2(rayPoints[i].gameObject.transform.position.x, 
+				    rayPoints[i].gameObject.transform.position.y), Vector2.up));
+		    }
 
-			//down
-			if (rayPoints[i].gameObject.name == "down")
+		    //down
+		    if (rayPoints[i].gameObject.name == "down")
             {
-				raysDown.Add(new Ray2D(new Vector2(rayPoints[i].gameObject.transform.position.x, 
-					rayPoints[i].gameObject.transform.position.y), Vector2.down));
-			}
+			    raysDown.Add(new Ray2D(new Vector2(rayPoints[i].gameObject.transform.position.x, 
+				    rayPoints[i].gameObject.transform.position.y), Vector2.down));
+		    }
 
-			//right
-			if (rayPoints[i].gameObject.name == "right")
+		    //right
+		    if (rayPoints[i].gameObject.name == "right")
             {
-				raysRight.Add(new Ray2D(new Vector2(rayPoints[i].gameObject.transform.position.x, 
-					rayPoints[i].gameObject.transform.position.y), Vector2.right));
-			}
+			    raysRight.Add(new Ray2D(new Vector2(rayPoints[i].gameObject.transform.position.x, 
+				    rayPoints[i].gameObject.transform.position.y), Vector2.right));
+		    }
 
-			//left
-			if (rayPoints[i].gameObject.name == "left")
+		    //left
+		    if (rayPoints[i].gameObject.name == "left")
             {
-				raysLeft.Add(new Ray2D(new Vector2(rayPoints[i].gameObject.transform.position.x, 
-					rayPoints[i].gameObject.transform.position.y), Vector2.left));
-			}
-		}
-	}
+			    raysLeft.Add(new Ray2D(new Vector2(rayPoints[i].gameObject.transform.position.x, 
+				    rayPoints[i].gameObject.transform.position.y), Vector2.left));
+		    }
+	    }
+    }
 
 	//Generates a list of possible directions in which there are no immediate collisions
 	void AddDirectionToList()
@@ -207,6 +208,8 @@ public class EnemyControl : MonoBehaviour
 
 		AddDirectionToList();
 
+        //checker is a bool which is true if the enemy should be actively looking for a new direction
+        //and false otherwise
 		if (checker == false)
         {
 			RandomDirection();
@@ -399,7 +402,7 @@ public class EnemyControl : MonoBehaviour
      * behind the enemy, so this exploit won't be possible. In the event that I decide to add enemies
      * that don't aggro to the player, I will take another look at this block.
 	 */
-	void OnTriggerEnter2D(Collider2D trigger)
+    void OnTriggerEnter2D (Collider2D trigger)
     {
         //This Character goes in the opposite direction it was going when it collided with the player
         if (trigger.tag == "Player")
@@ -410,10 +413,10 @@ public class EnemyControl : MonoBehaviour
 
         if (trigger.GetComponent<CheckPoint>())
         {
-			CheckCollision();
-			CheckForPlayer();
-		}
-	}
+		    CheckCollision();
+		    CheckForPlayer();
+	    }
+    }
 
     /* This block only applies to collisions with bombs now. All other "collisions" are handled with
      * triggers, and most of the logic is on other game objects. This was done intentionally to try and
